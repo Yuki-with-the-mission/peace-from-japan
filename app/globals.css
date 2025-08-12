@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+
+body { @apply bg-white text-gray-900; }
+
+.container { @apply max-w-5xl mx-auto px-4; }
+
+.badge-fact { @apply inline-flex items-center gap-2 rounded-full bg-fact/10 text-fact px-3 py-1 text-xs font-semibold; }
+.badge-opinion { @apply inline-flex items-center gap-2 rounded-full bg-opinion/10 text-opinion px-3 py-1 text-xs font-semibold; }
+.card { @apply rounded-2xl border border-gray-200 shadow-sm p-5 bg-white; }
+.h1 { @apply text-2xl md:text-3xl font-bold; }
+.h2 { @apply text-xl md:text-2xl font-semibold; }
+.muted { @apply text-sm text-gray-500; }

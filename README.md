@@ -1,52 +1,36 @@
-# Peace from Japan 🌏🇯🇵
-*A Japan-based site sharing conflict updates, historical background, and peace actions.*
+# Gaza & Ukraine — Facts & Voices (JP)
 
-日本から世界へ向けて、ガザ・ウクライナなどの紛争状況と背景をわかりやすく伝え、平和への行動を促すプロジェクトです。
+静的アーカイブ＋意見欄を同居させた Next.js スターターです。Tailwind で最小限のデザイン、ソース明記・日付明記、事実(FACT)と意見(OPINION)のUI分離を実装しています。
 
----
-
-## 📌 Purpose / 目的
-- 最新ニュースと関心の動きを可視化（世界地図やグラフ）
-- 紛争の背景や歴史をわかりやすく解説
-- 市民と政府の視点を比較
-- 地域別の世界の反応を紹介
-- 制作者の意見・提言を発信
-- 寄付先・署名・イベントなど行動につながる情報を提供
-
----
-
-## 🗂 Page Structure / ページ構成
-1. **トップページ**：最新ニュースと関心の動き（地図・グラフ）
-2. **背景解説**：ガザ／ウクライナ紛争の歴史・現状
-3. **視点比較**：市民 vs 政府
-4. **世界の反応**：地域別
-5. **意見と提言**：制作者のスタンス
-6. **アクション案**：寄付・署名・イベント情報
-7. **FAQ**：「中立とは？」「なぜ停戦しない？」
-
----
-
-## 🛠 Tech Stack / 技術スタック
-- **Framework**: Next.js (予定)
-- **Hosting**: Vercel
-- **Data Visualization**: Chart.js / D3.js（予定）
-- **Content Management**: Markdown + GitHub
-
----
-
-## 🚀 How to Run Locally / ローカルでの実行方法
+## すぐ試す
 ```bash
-git clone https://github.com/<your-username>/peace-from-japan.git
-cd peace-from-japan
-npm install
+# 1) 依存を入れる
+npm i
+
+# 2) 開発サーバ
 npm run dev
+# → http://localhost:3000
+
+# 3) GitHub に push → Vercel で Import して Deploy
 ```
+## デプロイ（Vercel）
+1. GitHub に新規リポジトリを作成し、このプロジェクトを push。
+2. https://vercel.com で「Add New… → Project」→ GitHub リポジトリを選択。
+3. Build 設定はデフォルトのまま（Framework: Next.js）。
+4. デプロイ完了すると `https://<project>.vercel.app` が発行されます。
+5. 独自ドメインは Project → Settings → Domains で追加（CNAME/ALIAS 設定）。
 
-## 📢 Author / 制作者
-- **Name**: （非公開）
-- **From**: Japan
-- **Contact**: （後日追加予定）
+## 情報設計
+- **Top**: 今日の動き（更新日付つき）、世界の反応（地域×時系列）、特集リンク
+- **Background**: 紛争の歴史・当事者・国際法の要点
+- **Reactions**: 地域別の反応（EU/US/RU/CN/ME/Asia）
+- **Opinion**: 制作者の立場（意見は別 UI）
+- **Actions**: 寄付・署名・イベント等の導線
 
-## 📄 License
-This project is licensed under the MIT License.
+## 出典方針
+- すべてのファクトに出典URLと日付(YYYY-MM-DD)を付与
+- 意見と事実を UI で明確に分離（色/ラベル/セクション）
 
+## 依存
+- Next.js(App Router)
+- Tailwind CSS
