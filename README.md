@@ -42,7 +42,10 @@ npm install
 npm run dev
 
 ## 📢 Author / 制作者
+- **Name**: （非公開）
 - **From**: Japan
+- **Contact**: （後日追加予定）
 
 ## 📄 License
 This project is licensed under the MIT License.
+
