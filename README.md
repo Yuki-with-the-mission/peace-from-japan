@@ -40,6 +40,7 @@ git clone https://github.com/<your-username>/peace-from-japan.git
 cd peace-from-japan
 npm install
 npm run dev
+```
 
 ## 📢 Author / 制作者
 - **Name**: （非公開）
