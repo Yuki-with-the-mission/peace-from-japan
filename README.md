@@ -43,3 +43,6 @@ npm run dev
 
 ## 📢 Author / 制作者
 - **From**: Japan
+
+## 📄 License
+This project is licensed under the MIT License.
