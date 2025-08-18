@@ -1,0 +1,24 @@
+{
+  "dateISO": "2025-08-17",
+  "headline": "（見出し）◯◯で停戦協議が再開、国連が監視団派遣を提案",
+  "lede": "（リード）主要当事者が48時間の予備協議に合意。越境支援の再開が焦点。",
+  "keyFacts": [
+    {
+      "text": "停戦協議はX市で実施。仲介は国連と国名Y",
+      "source": { "name": "Reuters", "url": "https://example.com/reuters" }
+    },
+    {
+      "text": "国名Zが人道回廊の再設置を表明",
+      "source": { "name": "AP", "url": "https://example.com/apnews" }
+    }
+  ],
+  "contextNotes": [
+    "今回の協議は前回中断から12日ぶり",
+    "監視団の規模や権限は未定"
+  ],
+  "media": {
+    "caption": "協議会場前の様子",
+    "credit": "Photo Pool",
+    "url": "/images/2025-08-17-1.jpg"
+  }
+}

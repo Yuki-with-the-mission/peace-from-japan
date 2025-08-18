@@ -1,20 +1,10 @@
-export type SnapshotKind = "fact" | "opinion";
+export type SourceRef = { name: string; url: string };
 
-export type SnapshotItem = {
-  kind: SnapshotKind;
-  text: string;
-  date?: string;
-  source?: string;
-  url?: string;
-};
-
-export type ReactionItem = {
-  region: string;
-  text: string;
-};
-
-export type HomeData = {
-  snapshotUpdated: string;
-  snapshot: SnapshotItem[];
-  reactions: ReactionItem[];
+export type Snapshot = {
+  dateISO: string; // YYYY-MM-DD
+  headline: string;
+  lede: string;
+  keyFacts: { text: string; source: SourceRef }[];
+  contextNotes?: string[];
+  media?: { caption?: string; credit?: string; url?: string };
 };
