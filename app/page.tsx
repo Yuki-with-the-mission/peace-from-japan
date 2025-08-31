@@ -1,5 +1,15 @@
-import { getSnapshotPreferToday } from "@/data/snapshots";
-import { Snapshot } from "@/data/types";
+//import { getSnapshotPreferToday } from "@/data/snapshots";
+//import { Snapshot } from "@/data/types";
+
+// 変更前
+// import { getSnapshotPreferToday } from "@/data/snapshots";
+// import { Snapshot } from "@/data/types";
+
+// 変更後（相対パス）
+import { getSnapshotPreferToday } from "../data/snapshots";
+import type { Snapshot } from "../data/types";
+
+
 
 export default async function Page() {
   const snapshot = await getSnapshotPreferToday(); // ← 今日が無ければ最新にフォールバック
