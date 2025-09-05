@@ -1,35 +1,53 @@
-import './globals.css';
-import Link from 'next/link';
+// app/layout.tsx
+import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
+// 使っていればフォントも（任意）
+import { Noto_Sans_JP } from "next/font/google";
+const noto = Noto_Sans_JP({ subsets: ["latin"], weight: ["400", "700"], display: "swap" });
 
 export const metadata = {
-  metadataBase: new URL('https://example.com'), // 後で独自ドメインに差し替え
-  title: 'オリーブの枝：背景・事実・市民視点の3軸で整理するアーカイブ＋意見サイト',
-  description: '日本語で、背景・事実・市民視点の3軸で整理するアーカイブ＋意見サイト',
-  alternates: { canonical: '/' }
+  title: "オリーブの枝",
+  description: "FACTとOPINIONを分けて伝える最小ニュースアーカイブ",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
-      <body>
-        <header className="border-b bg-white/70 backdrop-blur sticky top-0 z-10">
-          <div className="container flex items-center justify-between py-3">
-            <Link href="/" className="font-bold">オリーブの枝</Link>
-            <nav className="flex gap-4 text-sm">
-              <Link href="/background" className="hover:underline">背景</Link>
-              <Link href="/reactions" className="hover:underline">世界の反応</Link>
-              <Link href="/opinion" className="hover:underline">意見</Link>
-              <Link href="/actions" className="hover:underline">できること</Link>
-            </nav>
-          </div>
-        </header>
-        <main className="container py-8">{children}</main>
-        <footer className="border-t mt-8">
-          <div className="container py-6 text-sm text-gray-500">
-            © {new Date().getFullYear()} Facts & Voices JP — 出典・日付明記 / 事実と意見の分離
-          </div>
-        </footer>
+      {/* フォント未使用なら className は "bg-gray-50 text-gray-900" だけでもOK */}
+      <body className={`${noto.className} bg-gray-50 text-gray-900`}>
+        <Header />
+        <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>
+        <Footer />
+        <Analytics /> {/* 使っていなければ削除可 */}
       </body>
     </html>
+  );
+}
+
+function Header() {
+  return (
+    <header className="sticky top-0 z-50 border-b bg-white/70 backdrop-blur">
+      <div className="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between">
+        <a href="/" className="flex items-center gap-2 font-semibold">
+          <span className="text-xl">🌿 オリーブの枝</span>
+        </a>
+        <nav className="text-sm flex gap-5">
+          <a href="/background" className="hover:underline">Background</a>
+          <a href="/reactions" className="hover:underline">Reactions</a>
+          <a href="/opinion" className="hover:underline">Opinion</a>
+          <a href="/actions" className="hover:underline">Actions</a>
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="mt-12 border-t">
+      <div className="mx-auto max-w-5xl px-4 py-6 text-xs text-gray-500">
+        © 2025 オリーブの枝 — 出典明記 / FACTとOPINIONのUI分離
+      </div>
+    </footer>
   );
 }
