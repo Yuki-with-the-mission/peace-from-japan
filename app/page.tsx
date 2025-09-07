@@ -8,6 +8,7 @@
 // 変更後（相対パス）
 import { getSnapshotPreferToday } from "../data/snapshots";
 import type { Snapshot } from "../data/types";
+import SnapshotCardClient from "../components/SnapshotCardClient";
 
 
 
@@ -24,6 +25,7 @@ export default async function Page() {
         ) : (
           <PreparingCard />
         )}
+        {snapshot ? <SnapshotCardClient snapshot={snapshot} /> : <PreparingCard />}
       </section>
 
       {/* 既存の「世界の反応 / 特集 / 編集方針」セクションはそのままでOK */}
