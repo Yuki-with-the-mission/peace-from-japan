@@ -1,9 +1,8 @@
 // app/layout.tsx
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-// 使っていればフォントも（任意）
 import { Noto_Sans_JP } from "next/font/google";
-const noto = Noto_Sans_JP({ subsets: ["latin"], weight: ["400", "700"], display: "swap" });
+const noto = Noto_Sans_JP({ subsets: ["latin"], weight: ["400","700"], display: "swap" });
 
 export const metadata = {
   title: "オリーブの枝",
@@ -13,12 +12,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
-      {/* フォント未使用なら className は "bg-gray-50 text-gray-900" だけでもOK */}
       <body className={`${noto.className} bg-gray-50 text-gray-900`}>
         <Header />
         <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>
         <Footer />
-        <Analytics /> {/* 使っていなければ削除可 */}
+        <Analytics />
       </body>
     </html>
   );
