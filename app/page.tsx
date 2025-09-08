@@ -1,71 +1,42 @@
-//import { getSnapshotPreferToday } from "@/data/snapshots";
-//import { Snapshot } from "@/data/types";
+// app/page.tsx
+export const runtime = "nodejs"; // fs を使うため Node ランタイムで実行
 
-// 変更前
-// import { getSnapshotPreferToday } from "@/data/snapshots";
-// import { Snapshot } from "@/data/types";
-
-// 変更後（相対パス）
 import { getSnapshotPreferToday } from "../data/snapshots";
-import type { Snapshot } from "../data/types";
 import SnapshotCardClient from "../components/SnapshotCardClient";
 
-
-
 export default async function Page() {
-  const snapshot = await getSnapshotPreferToday(); // ← 今日が無ければ最新にフォールバック
+  // 今日が無ければ最新にフォールバック
+  const snapshot = await getSnapshotPreferToday();
 
   return (
     <main className="space-y-10">
-      <section>
-        <h2 className="text-xl font-semibold mb-4">今日のスナップショット</h2>
-
-        {snapshot ? (
-          <SnapshotCard snapshot={snapshot} />
-        ) : (
-          <PreparingCard />
-        )}
+      <Section title="今日のスナップショット">
         {snapshot ? <SnapshotCardClient snapshot={snapshot} /> : <PreparingCard />}
-      </section>
+      </Section>
 
-      {/* 既存の「世界の反応 / 特集 / 編集方針」セクションはそのままでOK */}
+      {/* 既存の「世界の反応 / 特集 / 編集方針」などは、同じ Section で包んで足してOK */}
+      {/* <Section title="世界の反応（ダイジェスト）">…</Section> */}
     </main>
   );
 }
 
-/** 簡易カード（あなたの既存UIに置き換えてOK） */
-function SnapshotCard({ snapshot }: { snapshot: Snapshot }) {
+/** 見出し＋白カード枠の小さいラッパー */
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <article className="rounded-2xl border p-5">
-      <h3 className="text-lg font-bold">{snapshot.headline}</h3>
-      <p className="text-sm text-gray-600 mt-1">{snapshot.lede}</p>
-
-      <ul className="mt-4 space-y-2">
-        {snapshot.keyFacts.map((k, i) => (
-          <li key={i} className="text-sm">
-            • {k.text}{" "}
-            <a className="underline text-gray-700" href={k.source.url} target="_blank" rel="noreferrer">
-              [{k.source.name}]
-            </a>
-          </li>
-        ))}
-      </ul>
-
-      {snapshot.contextNotes?.length ? (
-        <div className="mt-3 text-xs text-gray-500">
-          {snapshot.contextNotes.map((c, i) => (
-            <p key={i}>※ {c}</p>
-          ))}
-        </div>
-      ) : null}
-    </article>
+    <section className="mb-10">
+      <h2 className="text-lg font-semibold mb-3">{title}</h2>
+      <div className="rounded-2xl border bg-white p-5 shadow-sm">{children}</div>
+    </section>
   );
 }
 
+/** データ未投入時の表示 */
 function PreparingCard() {
   return (
-    <div className="rounded-2xl border p-5">
-      <p className="text-sm text-gray-600">準備中です。最初のスナップショットJSONを <code>/data/snapshots/</code> に追加してください。</p>
+    <div className="rounded-2xl border bg-white p-5 shadow-sm">
+      <p className="text-sm text-gray-600">
+        準備中です。最初のスナップショットJSONを <code>/data/snapshots/</code> に追加してください。
+      </p>
     </div>
   );
 }
