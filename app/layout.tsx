@@ -2,6 +2,7 @@
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Noto_Sans_JP } from "next/font/google";
+import Nav from "@/components/Nav";
 const noto = Noto_Sans_JP({ subsets: ["latin"], weight: ["400","700"], display: "swap" });
 
 export const metadata = {
